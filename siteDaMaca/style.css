@@ -1,3 +1,7 @@
 html {
-	backgroud-color: black;
+	scroll-behavior: smooth;
+}
+
+section {
+	margin: 5%;
 }
