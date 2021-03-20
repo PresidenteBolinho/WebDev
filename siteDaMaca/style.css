@@ -1,7 +1,36 @@
 html {
 	scroll-behavior: smooth;
+    background-color: rgb(35, 144, 35, 0.5);
 }
 
 section {
 	margin: 5%;
+    padding: 2%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px;
 }
+
+#Informacoes_Nutricionais{
+
+}
+
+#Tipos_de_Maca{
+
+}
+
+#Beneficios{
+
+}
+
+#Informacoes_Nutricionais p{
+
+}
+
+#Tipos_de_Maca p{
+
+}
+
+#Beneficios p{
+
+}
+

@@ -7,5 +7,9 @@ Repositorio para projetos com objetivo de praticar o desenvolvimento web.
 
 # To-Do siteDaMaca
 
+
+
+# Done
+
 - Determinar as sessões do site
 - Escolher assuntos da maçã
