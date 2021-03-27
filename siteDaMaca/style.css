@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@700&display=swap');
+
 html {
 	scroll-behavior: smooth;
     background-color: rgb(35, 144, 35, 0.5);
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    position: fixed;
 }
 
 section {
@@ -10,16 +21,46 @@ section {
     box-shadow: 2px 2px 5px;
 }
 
-#Informacoes_Nutricionais{
+h1, h2 {
+    font-family: "Averia Serif Libre", sans-serif;
+}
 
+p {
+    font-family: Rubik, sans-serif;
+    font-size: medium;
+    line-height: 150%   ;
+}
+
+
+#Informacoes_Nutricionais{
+    
 }
 
 #Tipos_de_Maca{
 
 }
 
-#Beneficios{
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
 
+.card {
+    width: 350px;
+    padding: 1.5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 12px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#Beneficios.card{
+    
 }
 
 #Informacoes_Nutricionais p{
