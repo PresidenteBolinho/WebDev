@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Ubuntu&display=swap');
 
 html {
 	scroll-behavior: smooth;
     background-color: rgb(35, 144, 35, 0.5);
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 body {
@@ -11,7 +14,20 @@ body {
 }
 
 header {
+    width: 100%;
+    padding: 0;
     position: fixed;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+main {
+    display: contents;
 }
 
 section {
@@ -22,11 +38,11 @@ section {
 }
 
 h1, h2 {
-    font-family: "Averia Serif Libre", sans-serif;
+    font-family: Ubuntu, sans-serif;
 }
 
 p {
-    font-family: Rubik, sans-serif;
+    font-family: Lora, serif;
     font-size: medium;
     line-height: 150%   ;
 }
