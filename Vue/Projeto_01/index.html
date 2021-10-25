@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MDRDBQB');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação Vue</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDRDBQB" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="app">
+        <div class="nav-bar"></div>
+
+        <div class="cart">Cart({{ cart }})</div>
+        <button class="button" :class="{ disableButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
+        <button class="button" v-on:click="removeByCart">Remove on Cart</button>
+        <product-display></product-display>
+    </div>
+
+    <!-- Import App -->
+    <script src="src/app.js"></script>
+
+    <!-- Import Components -->
+    <script src="./Components/ProductDisplay.js"></script>
+</body>
+</body>
+
+</html>
