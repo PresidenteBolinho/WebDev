@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interligações de Classe e Estilo</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="message" placeholder="Me edite"/>
+        <p>A mensagem é: {{ message }}</p>
+
+        <span>Mensagem com múltiplas linhas:</span>
+        <p style="white-space: pre-line;">{{ message}}</p>
+        <br>
+        <textarea v-model="message" placeholder="Escreva bastante"></textarea>
+        <br>
+        <hr>
+
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+        <br>
+        <hr>
+
+        <div>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+            <label for="mike">Mike</label>
+            <br>
+            <span>Nomes selecionados: {{ checkedNames }}</span>
+        </div>
+        <hr>
+        
+        <div>
+            <input type="radio" id="one" value="Primeiro" v-model="picked" />
+            <label for="one">Um</label>
+            <br>
+            <input type="radio" id="two" value="Segundo" v-model="picked" />
+            <label for="two">Dois</label>
+            <br>
+            <span>Escolhido: {{ picked }}</span>
+        </div>
+        <br>
+
+        <div class="demo">
+            <select v-model="selected">
+                <option disabled value="">Escolha um</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br>
+            <span>Selecionado: {{ selected }}</span>
+        </div>
+        <br>
+
+        <div>
+            <select v-model="selected" multiple>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br>
+            <span>Selecionados: {{ selected }}</span>
+        </div>
+        <hr>
+
+        <div class="demo">
+            <select v-model="selected">
+                <option v-for="option in options" :value="option.value">
+                    {{ option.text}}
+                </option>
+            </select>
+            <span>Selecionado: {{ selected }}</span>
+        </div>
+
+        <input type="checkbox" v-model="toggle" true-value="yes" false-value="no" />
+
+        <a href="../9-componentes/index.html">Básico sobre Componentes</a>
+    </div>
+
+
+    <!-- Importe da Aplicação -->
+    <script src="./app.js"></script>
+</body>
+
+</html>
