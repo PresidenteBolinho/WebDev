@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interligações de Classe e Estilo</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in itens">
+                {{ item.message }}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(item, index) in itens">
+                {{ parentMessage}} - {{index}} - {{item.message}}
+            </li>
+        </ul>
+
+        <ul class="demo">
+            <li v-for="value in myObject">
+                {{value}}
+            </li>
+        </ul>
+
+        <li v-for="n in evenNumbers" :key="n">
+            {{ n }}
+        </li>
+        
+        <ul v-for="numero in sets">
+            <li v-for="n in even(numero)" :key="n">{{ n }}</li>
+        </ul>
+        
+        <div demo>
+            <span v-for="n in 100" :key="n">{{ n + ' '}}</span>
+        </div>
+
+        <ul>
+            <template v-for="item in itens" :key="item.msg">
+                <li>{{item.msg}}</li>
+                <li class="divider" role="presentation"></li>
+            </template>
+        </ul>
+
+        <div>
+            <form v-on:submit.prevent="addNewTodo">
+                <label for="new-todo">Adicionar tarefa:</label>
+                <input
+                    v-model="newTodoText"
+                    id="new-todo"
+                    placeholder="Ex.: Alimentar o gato"
+                />
+                <button>Adicionar</button>
+            </form>
+            <ul>
+                <todo-item
+                    v-for="(todo, index) in todos"
+                    :key="todo.id"
+                    :title="todo.title"
+                    @remove="todos.splice(index, 1)"
+                ></todo-item>
+            </ul>
+        </div>
+
+        <a href="../7-manipulação-eventos/index.html">Manipulação de Eventos</a>
+    </div>
+
+
+    <!-- Importe da Aplicação -->
+    <script src="./app.js"></script>
+</body>
+
+</html>
