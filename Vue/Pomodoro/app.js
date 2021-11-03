@@ -1,6 +1,6 @@
 const pomodoro = Vue.createApp({
     data() {
-        const pomodoroTempo = 0.1 * 60;
+        const pomodoroTempo = 25 * 60;
         const pausaCurta = 5 * 60;
         const pausaLonga = 15 * 60;
 
@@ -10,18 +10,29 @@ const pomodoro = Vue.createApp({
             pausaLonga,
             tempoAtual: pomodoroTempo,
             textoBotao: "Começar!",
-            intervalo: null
+            intervalo: null,
+            contagemPomodoros: 0,
+
+            tarefas: [],
+            novoTextoTarefa: '',
+            IdTarefa: 1
         }
     },
     methods: {
         tempoDePomodoro() {
+            clearInterval(this.intervalo)
             this.tempoAtual = this.pomodoroTempo
+            this.textoBotao = "Começar!"
         },
         tempoDePausaCurta() {
+            clearInterval(this.intervalo)
             this.tempoAtual = this.pausaCurta
+            this.textoBotao = "Começar!"
         },
         tempoDePausaLonga() {
+            clearInterval(this.intervalo)
             this.tempoAtual = this.pausaLonga
+            this.textoBotao = "Começar!"
         },
         cronometrar() {
             if (this.textoBotao === "Começar!" || this.textoBotao === "Recomeçar") {
@@ -47,9 +58,25 @@ const pomodoro = Vue.createApp({
                 // Clear interval
                 clearInterval(this.intervalo);
 
+                if (this.contagemPomodoros >= 4){
+                    this.tempoAtual = this.pausaLonga
+                    this.contagemPomodoros = 0
+                } else {
+                    this.tempoAtual = this.pausaCurta
+                    this.contagemPomodoros++
+                }
+                    
+
                 // Immediately disable button and set state
                 this.textoBotao = "Começar!";
             }
+        },
+        adicionarTarefa() {
+            this.tarefas.push({
+                id: this.IdTarefa++,
+                title: this.novoTextoTarefa
+            })
+            this.novoTextoTarefa = ''
         }
     },
     computed: {
@@ -59,9 +86,23 @@ const pomodoro = Vue.createApp({
             const minutosRestantes = ("0" + minutos).slice(-2);
             const segundosRestantes = ("0" + segundos).slice(-2);
 
+            if (minutosRestantes <= 0 && segundosRestantes <= 0)
+                this.concluido()
+
             return `${minutosRestantes}:${segundosRestantes}`
         }
     }
+})
+
+pomodoro.component('item-tarefa', {
+    props: ['title'],
+    emits: ['remove'],
+    template: `
+    <li>
+        {{ title }}
+        <button @click="$emit('remove')">Remover</button>
+    </li>
+    `
 })
 
 pomodoro.mount('#app')
