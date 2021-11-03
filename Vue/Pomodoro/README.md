@@ -8,13 +8,13 @@ O projeto em si é dividido em pastas para separar cada um dos aprendizados, e n
 
 ## Relogio
 
-* Formatar os valores bunitinho
-* Diminuir o tempo até chegar em 0
+* [X] Formatar os valores bunitinho
+* [x] Diminuir o tempo até chegar em 0
 * Alternar valores
 
 ## Interface
 
-* Alternar tempos quando trocado entre pomodoro e pausas
+* [X] Alternar tempos quando trocado entre pomodoro e pausas
 
 ## Lista de tarefas
 
@@ -30,10 +30,6 @@ O projeto em si é dividido em pastas para separar cada um dos aprendizados, e n
 
 # To-do
 
-[] Contador Funcionar
-
-[] Abas do pomodoro
-
 [] Metodo de adicionar no item funcionar
 
 [] Pomodoro contabilizar para cada atividade
@@ -41,3 +37,7 @@ O projeto em si é dividido em pastas para separar cada um dos aprendizados, e n
 # Done
 
 [x] Lista de tarefas
+
+[X] Contador Funcionar
+
+[X] Abas do pomodoro

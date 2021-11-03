@@ -26,7 +26,7 @@
                 <button @click="tempoDePausaLonga()">Pausa longa</button>
             </span>
             <br>
-            
+
             <label>{{ relogio }}</label>
             <br>
 
@@ -35,15 +35,24 @@
             </span>
         </div>
         <br>
-       
+
         <!-- Lista de tarefas -->
         <div class="container">
+            <form v-on:submit.prevent="adicionarTarefa()">
+                <label for="nova-tarefa">Adicionar tarefa: </label>
+                <input v-model="novoTextoTarefa" id="nova-tarefa" placeholder="Ex.: Fazer o almoço">
+                <button>Adicionar</button>
+            </form>
+            <hr>
             <ul>
-                <li>Lista de tarefas</li>
+                <item-tarefa v-for="(tarefa, index) in tarefas"
+                :key="tarefa.id"
+                :title="tarefa.title"
+                @remove="tarefas.splice(index, 1)"></item-tarefa>
             </ul>
         </div>
     </div>
-    
+
     <!-- Importação da aplicação Vue -->
     <script src="./app.js"></script>
 </body>
