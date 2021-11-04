@@ -72,11 +72,15 @@ const pomodoro = Vue.createApp({
             }
         },
         adicionarTarefa() {
-            this.tarefas.push({
-                id: this.IdTarefa++,
-                title: this.novoTextoTarefa
-            })
-            this.novoTextoTarefa = ''
+            if(this.novoTextoTarefa != ''){
+                this.tarefas.push({
+                    id: this.IdTarefa++,
+                    title: this.novoTextoTarefa
+                })
+                this.novoTextoTarefa = ''
+            } else 
+                alert('O campo não pode estar vazio.')
+
         }
     },
     computed: {
@@ -100,7 +104,7 @@ pomodoro.component('item-tarefa', {
     template: `
     <li>
         {{ title }}
-        <button @click="$emit('remove')">Remover</button>
+        <button class="btn btn-danger" @click="$emit('remove')">Remover</button>
     </li>
     `
 })
