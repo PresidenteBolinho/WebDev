@@ -16,7 +16,9 @@
         <div :class="vuexModo">
             <h1>{{ vuexMsg }}</h1>
             <h3>{{ vuexCount }}</h3>
-            <button">Adicionar</button>
+            <button @click="increment">Adicionar</button>
+            <br>
+            <button @click="mudarModo">{{vuexModo}}</button>
         </div>
     </div>
 
