@@ -1,0 +1,13 @@
+#app {
+    height: 100vh;
+}
+
+.claro {
+    background-color: aliceblue;
+    color: midnightblue;
+}
+
+.escuro {
+    background-color: midnightblue;
+    color: aliceblue;
+}
