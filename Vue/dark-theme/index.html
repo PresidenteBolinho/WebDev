@@ -13,30 +13,6 @@
 
 <body>
     <div id="app">
-        <header>
-            <ul>
-                <li>Home</li>
-                <li>Sobre</li>
-                <li>Contatos</li>
-            </ul>
-        </header>
-        <main class="container">
-            <div class="card">
-                <div class="card-header">
-                    <label>Testando</label>
-                    <p>switch</p>
-                </div>
-                <div class="card-body">
-                    <p>Paragrafo 1</p>
-                    <p>Paragrafo 2</p>
-                </div>
-                <div class="card-footer">
-                    <div>
-                        <button class="btn btn-primary">Mudar tema</button>
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
 
     <!-- Importe do Vue e Vuex -->
@@ -51,8 +27,21 @@
     <script>
         // Aplicação Vue
         const app = Vue.createApp({
+            template: `
+            <div class="app" :class="vuexStyleModo ? 'theme-dark' : 'theme-light'">
+                <main class="container" :class="vuexStyleModo">
+                    <header-component></header-component>
+                    <card1></card1>
+                    <br>
+                    <card2></card2>
+                </main>
+            </div>
+            `,
+            components: {
+
+            },
             computed: {
-                vuexMsg() {
+                vuexStyleModo() {
                     return this.$store.getters.getStyleModo
                 }
             }
@@ -62,13 +51,91 @@
             state() {
                 return {
                     style: {
-                        modo: ''
+                        darkMode: false
                     }
                 }
             },
             getters: {
                 getStyleModo(state) {
-                    return state.style.modo
+                    return state.style.darkMode
+                }
+            },
+            mutations: {
+                changeTheme(state) {
+                    state.style.darkMode = !state.style.darkMode
+                }
+            }
+        })
+
+        app.component('header-component', {
+            props: ['vuexStyleModo'],
+            template: `
+            <header :class="vuexStyleModo">
+                <ul>
+                    <li>Home</li>
+                    <li>Sobre</li>
+                    <li>Contatos</li>
+                </ul>
+            </header>
+            `,
+        })
+
+        app.component('card1', {
+            template: `
+            <div class="card" :class="vuexStyleModo">
+                <div class="card-header">
+                    <label>Eu sou card 1</label>
+                    <p v-if=vuexStyleModo>Funcionando</p>
+                </div>
+                <div class="card-body">
+                    <p>Paragrafo 1</p>
+                    <p>Paragrafo 2</p>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <button class="btn btn-primary" @click="mudarTema()">Mudar tema</button>
+                    </div>
+                </div>
+            </div>
+            `,
+            methods: {
+                mudarTema() {
+                    this.$store.commit('changeTheme')
+                }
+            },
+            computed: {
+                vuexStyleModo() {
+                    return this.$store.getters.getStyleModo
+                }
+            }
+        })
+
+        app.component('card2', {
+            template: `
+                <div class="card">
+                    <div class="card-header">
+                        <label>Eu sou o card 2</label>
+                        <p>switch</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Paragrafo 1</p>
+                        <p>Paragrafo 2</p>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <button class="btn btn-primary" @click="mudarTema()">Mudar tema</button>
+                        </div>
+                    </div>
+                </div>
+                `,
+            methods: {
+                mudarTema() {
+                    this.$store.commit('changeTheme')
+                }
+            },
+            computed: {
+                vuexStyleModo() {
+                    return this.$store.getters.getStyleModo
                 }
             }
         })
