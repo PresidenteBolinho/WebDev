@@ -1,0 +1,11 @@
+.app {
+    height: 100vh;
+}
+
+.theme-light {
+    background-color: beige;
+}
+
+.theme-dark {
+    background-color:darkslateblue;
+}
